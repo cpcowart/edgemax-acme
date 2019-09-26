@@ -44,12 +44,6 @@ while getopts ":hivd:n:t:k:" opt; do
 done
 shift $((OPTIND -1))
 
-# check for required parameters
-if [ ${#DOMAINS[@]} -eq 0 ] || [ -z ${DNS+x} ] \
-        || [ ${#TAGS[@]} -eq 0 ] || [ ${#KEYS[@]} -eq 0 ] || [ ${#TAGS[@]} -ne ${#KEYS[@]} ]; then
-    usage
-fi
-
 # prepare flags for acme.sh
 for val in "${DOMAINS[@]}"; do
      DOMAINARG+="-d $val "
